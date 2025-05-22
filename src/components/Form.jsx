@@ -1,33 +1,36 @@
-import React from "react";
 import { useForm } from "react-hook-form";
+import api from "../api/axios.js";
+import toast from "react-hot-toast";
 
 const Form = () => {
   const {
     register,
     handleSubmit,
     watch,
-    //making custom error (like for server side)
-    setError,
+    reset,
+    setError,  //making custom error (like for server side)
     formState: { errors, isSubmitting },
   } = useForm({mode: "onBlur"});
 
-  const onSubmit = (data) => {
-    console.log(data);
-    // try {
-    //     // const response = await fetch(`${process.env.BACKEND_URI}/submitform`, {method: POST});
-    //     // // const res  = await response.text();
-    //     // console.log(data, response);
-        
-    // } catch (error) {
-    //     console.log(error)
-    // }
+  const onSubmit = async(formData) => {
+    try {
+      const res = await api.post("api/v1/submitform", formData);
+      toast.success("Form Submitted successfully!");
+      reset();
+    } catch (error) {
+      toast.error("Something went wrong. Please try again.");
+      console.log(error);
+    }
+   
   }
 
   //   console.log(watch("example")); // watch input value by passing the name of it
 
   return (
     <section className="w-full lg:w-[70%] h-[80%] mx-auto mt-3 p-5 rounded-3xl">
+
       <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
+
         <label htmlFor="myName">Name:</label>
         <input
           type="text"
@@ -46,10 +49,10 @@ const Form = () => {
           placeholder="Enter Your name"
           className="focus:outline-none border-b-2 mb-4"
         />
+
         {errors.name && (
           <div className="text-red-500 text-center text-sm mb-2 mt-0">
-            {" "}
-            {errors.name.message}{" "}
+            {errors.name.message}
           </div>
         )}
 
@@ -69,8 +72,7 @@ const Form = () => {
         />
         {errors.email && (
           <div className="text-red-500 text-center text-sm mb-2 mt-0">
-            {" "}
-            {errors.email.message}{" "}
+            {errors.email.message}
           </div>
         )}
 
@@ -97,8 +99,7 @@ const Form = () => {
         />
         {errors.phone && (
           <div className="text-red-500 text-center text-sm mb-2 mt-0">
-            {" "}
-            {errors.phone.message}{" "}
+            {errors.phone.message}
           </div>
         )}
 
