@@ -1,17 +1,25 @@
 import React from "react";
 import contact from "../assets/contact-us.webp";
 import Form from "../components/Form.jsx";
+import { motion } from "motion/react";
 
 const Hero = () => {
   return (
     <section className="w-[80vw] h-[fit-content] mx-auto mt-5 bg-[rgb(226, 223, 210)] flex flex-col lg:flex-row">
-      <div className="lg:h-[50%] lg:w-[50%]">
+      <motion.div 
+        initial={{x:"-100%"}}
+        animate={{
+          x: 0,
+          transition: { duration: 0.3 }
+        }}
+        
+      className="lg:h-[50%] lg:w-[50%]">
         <img
           src={contact}
           alt="contact us banner"
           className="h-[100%] w-[100%] object-contain"
         />
-      </div>
+      </motion.div>
 
       <div className="flex flex-col items-center w-[100%] lg:w-[50%]">
         <h1 className="mt-10 text-3xl font-bold"> Contact Us </h1>
