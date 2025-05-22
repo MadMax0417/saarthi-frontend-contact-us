@@ -29,8 +29,8 @@ const Form = () => {
     <section className="w-full lg:w-[70%] h-[80%] mx-auto mt-3 p-5 rounded-3xl">
        {/* Loader overlay */}
       {isSubmitting && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="w-12 h-12 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
+        <div className="fixed inset-0 bg-[#faf9f99a] bg-opacity-50 z-50 flex items-center justify-center">
+          <div className="w-12 h-12 border-4 border-black border-t-transparent rounded-full animate-spin"></div>
         </div>
       )}
       <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
