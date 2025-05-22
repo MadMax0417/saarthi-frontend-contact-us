@@ -3,6 +3,9 @@
 *{
     font-family: "Poppins";
 }
+html {
+    scroll-behavior: smooth;
+}
 
 nav {
     position: sticky;

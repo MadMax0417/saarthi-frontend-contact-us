@@ -8,12 +8,7 @@ const Nav = () => {
       className="flex h-20 items-center justify-center
         gap-[10px] w-full shadow-[9px_3px_6px_1px_#0f0f0f99]"
     >
-      <motion.div
-        initial={{ y: "-100%" }}
-        animate={{
-          y: 0,
-          transition: { duration: 0.3 },
-        }}
+      <div
         className="w-20 h-15 mr-0 justify-items-start"
       >
         <img
@@ -21,7 +16,7 @@ const Nav = () => {
           alt="logo"
           className=" h-[100%] w-[100%] object-contain ml-5"
         />
-      </motion.div>
+      </div>
 
       <div
         className=" text-xl
