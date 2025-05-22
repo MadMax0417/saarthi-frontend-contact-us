@@ -8,11 +8,11 @@ const Form = () => {
     handleSubmit,
     watch,
     reset,
-    setError,  //making custom error (like for server side)
+    setError, //making custom error (like for server side)
     formState: { errors, isSubmitting },
-  } = useForm({mode: "onBlur"});
+  } = useForm({ mode: "onBlur" });
 
-  const onSubmit = async(formData) => {
+  const onSubmit = async (formData) => {
     try {
       const res = await api.post("api/v1/submitform", formData);
       toast.success("Form Submitted successfully!");
@@ -21,16 +21,13 @@ const Form = () => {
       toast.error("Something went wrong. Please try again.");
       console.log(error);
     }
-   
-  }
+  };
 
   //   console.log(watch("example")); // watch input value by passing the name of it
 
   return (
     <section className="w-full lg:w-[70%] h-[80%] mx-auto mt-3 p-5 rounded-3xl">
-
       <form className="flex flex-col" onSubmit={handleSubmit(onSubmit)}>
-
         <label htmlFor="myName">Name:</label>
         <input
           type="text"
@@ -118,7 +115,11 @@ const Form = () => {
           })}
           id="myMessage"
           cols="20"
-          rows="3"
+          rows={1}
+          onInput={(e) => {
+            e.target.style.height = "auto";
+            e.target.style.height = `${e.target.scrollHeight}px`;
+          }}
           className="focus:outline-none border-b-2 mb-4"
           placeholder="Enter Your Message"
         ></textarea>

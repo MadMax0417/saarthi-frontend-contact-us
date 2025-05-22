@@ -1,11 +1,11 @@
 import React from "react";
-import contact from "../assets/contact-us.jpg";
+import contact from "../assets/contact-us.webp";
 import Form from "../components/Form.jsx";
 
 const Hero = () => {
   return (
     <section className="w-[80vw] h-[fit-content] mx-auto mt-5 bg-[rgb(226, 223, 210)] flex flex-col lg:flex-row">
-      <div >
+      <div className="lg:h-[50%] lg:w-[50%]">
         <img
           src={contact}
           alt="contact us banner"
